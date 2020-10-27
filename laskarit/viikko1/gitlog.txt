@@ -1,0 +1,115 @@
+commit d2f67228245f3ed6f8a3c92154e099eca5edd5cc
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 15:27:20 2020 +0200
+
+    file1 poistettu ja file2 uudelleennimetty
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit bb75d9f383dadae555e43f393e5591f8239a1daa
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 15:16:17 2020 +0200
+
+    hakemisto tiedostoja lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 052224006f665cb9a5a479b379fb848bb8e22c5e
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:55:49 2020 +0200
+
+    muutoksia ekaan ja kolmanteen
+
+ eka.txt    | 7 +------
+ kolmas.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+commit 865932d3d505dd5eb44a7d41ade8ba3b4a18d083
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:50:48 2020 +0200
+
+    tiedosto.txt uudelleennimetty eka.txt
+
+ eka.txt      | 90 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ tiedosto.txt | 90 ------------------------------------------------------------
+ 2 files changed, 90 insertions(+), 90 deletions(-)
+
+commit 1d13cc0084fdd01cf0c391138ab0928d88270676
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:48:13 2020 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit ac3bdb26ea77709c43a4dd3ba1e46439992c2a37
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:45:19 2020 +0200
+
+    osa tekstistä poistettu ja vähän lisätty
+
+ tiedosto.txt | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+
+commit dbc9041e84c648d6889329807c0347d3bdd0db44
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:41:48 2020 +0200
+
+    paljon tekstiä tiedosto.txt
+
+ tiedosto.txt | 103 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 103 insertions(+)
+
+commit 462575573de2ef255e2ad54311653f5b9c024313
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:35:16 2020 +0200
+
+    stuff lisätty
+
+ stuff/juttuja.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit aee7a679076ec34052927ea98eb9746053e3e158
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:33:51 2020 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 3759d2f243deb020f9931aefd334084172328687
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:32:28 2020 +0200
+
+    kolmas lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 48c16ba01b36c6ce245c9b3d22ee203462d94df4
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:27:06 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit b19fedb44ea278864a61343954821ddd5ad47fd1
+Author: Janne Penttala <janne_96_hotmail.com>
+Date:   Tue Oct 27 14:23:15 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
