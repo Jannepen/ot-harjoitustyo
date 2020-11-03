@@ -8,5 +8,4 @@
 
 [komentorivi.txt](https://github.com/Jannepen/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-tää on muutos
 
