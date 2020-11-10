@@ -12,3 +12,9 @@
 ### Viikko 2
 
 [testikattavuus.png](https://github.com/Jannepen/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
+
+### Harjoitustyö
+
+[määrittelydokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+[työaikakirjanpito](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
