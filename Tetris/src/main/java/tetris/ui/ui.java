@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author jannepen
  */
-public class TetrisUI extends Application {
+public class ui extends Application {
     
     @Override
     public void start(Stage window) throws Exception {
