@@ -1,19 +1,40 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Tetris
 
-## Tehtävät
+## Sovelluksen tämänhetkinen tila
 
-### Viikko 1
+Tällä hetkellä sovellus ainoastaan luo yhden satunnaisesti valitun palikan. Palikkoja on 7 erilaista. Sovelluksessa ei ole vielä testejä.
 
-[gitlog.txt](https://github.com/Jannepen/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+## Sovelluksen käyttö
 
-[komentorivi.txt](https://github.com/Jannepen/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+## Komentorivitoiminnot
 
+### Koodin suorittaminen
 
-### Viikko 2
+Koodin pystyy suorittamaan komennolla
+```
+mvn compile exec:java -Dexec.mainClass=tetris.Main
+```
 
-[testikattavuus.png](https://github.com/Jannepen/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
+###Testaus
 
-### Harjoitustyö
+Testit suoritetaan komennolla
+```
+mvn test
+```
+Testikattavuusraportti saadaan komennolla
+```
+mvn jacoco:report
+```
+
+### Suoritettavan jar-tiedoston tekeminen
+
+Suoritetaan komento 
+```
+mvn package
+```
+nyt hakemistossa target on suoritettava jar-tiedosto Tetris-1.0-SNAPSHOT.jar
+
+## Dokumentaatio
 
 [määrittelydokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
