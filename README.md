@@ -4,8 +4,6 @@
 
 Tällä hetkellä sovellus ainoastaan luo yhden satunnaisesti valitun palikan. Palikkoja on 7 erilaista. Sovelluksessa ei ole vielä testejä.
 
-## Sovelluksen käyttö
-
 ## Komentorivitoiminnot
 
 ### Koodin suorittaminen
@@ -15,7 +13,7 @@ Koodin pystyy suorittamaan komennolla
 mvn compile exec:java -Dexec.mainClass=tetris.Main
 ```
 
-### Testaus
+### Testaus (Huom. testejä ei vielä ole)
 
 Testit suoritetaan komennolla
 ```
