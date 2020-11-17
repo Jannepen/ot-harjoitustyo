@@ -9,6 +9,6 @@ package tetris.domain;
  *
  * @author jannepen
  */
-public class palikka {
+public class piece {
     
 }
