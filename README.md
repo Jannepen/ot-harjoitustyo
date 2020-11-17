@@ -15,7 +15,7 @@ Koodin pystyy suorittamaan komennolla
 mvn compile exec:java -Dexec.mainClass=tetris.Main
 ```
 
-###Testaus
+### Testaus
 
 Testit suoritetaan komennolla
 ```
