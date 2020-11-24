@@ -8,6 +8,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.FlowPane;
@@ -16,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import tetris.domain.Piece;
 
 public class TetrisUi extends Application {
     
@@ -23,13 +26,23 @@ public class TetrisUi extends Application {
     public int xmax = 11*size;
     public int ymax = 21*size;
     public Group group = new Group();
+    public Piece piece;
+    public Scene scene;
+
     
     @Override
     public void start(Stage window) throws Exception {
         
-        newPiece();
+        piece = new Piece(new Rectangle(0,0), new Rectangle(0,0),new Rectangle(0,0),new Rectangle(0,0),0,0); //initializing piece
+
         
-        Scene scene = new Scene(group, xmax, ymax);
+        piece.newPiece();
+        group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
+        System.out.println(piece.getPiecenumber());
+        
+        scene = new Scene(group, xmax, ymax);
+        
+        moveOnKeyPressed(piece);
         
         window.setScene(scene);
         window.show();
@@ -37,59 +50,24 @@ public class TetrisUi extends Application {
         
     }
     
-    public void newPiece() {
-        
-        Random random = new Random();
-        
-        int n = random.nextInt(7);
-        
-        if (n == 0){
-            Rectangle a = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*6,0,size-1,size-1);
-            Rectangle c = new Rectangle(size*5,size*1,size-1,size-1);
-            Rectangle d = new Rectangle(size*6,size*1,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 1){
-            Rectangle a = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*5,size*1,size-1,size-1);
-            Rectangle c = new Rectangle(size*5,size*2,size-1,size-1);
-            Rectangle d = new Rectangle(size*5,size*3,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 2) {
-            Rectangle a = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*6,0,size-1,size-1);
-            Rectangle c = new Rectangle(size*4,size*1,size-1,size-1);
-            Rectangle d = new Rectangle(size*5,size*1,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 3) {
-            Rectangle a = new Rectangle(size*4,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle c = new Rectangle(size*5,size*1,size-1,size-1);
-            Rectangle d = new Rectangle(size*6,size*1,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 4) {
-            Rectangle a = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*5,size*1,size-1,size-1);
-            Rectangle c = new Rectangle(size*5,size*2,size-1,size-1);
-            Rectangle d = new Rectangle(size*6,size*2,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 5) {
-            Rectangle a = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*5,size*1,size-1,size-1);
-            Rectangle c = new Rectangle(size*5,size*2,size-1,size-1);
-            Rectangle d = new Rectangle(size*4,size*2,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        } else if (n == 6) {
-            Rectangle a = new Rectangle(size*4,0,size-1,size-1);
-            Rectangle b = new Rectangle(size*5,0,size-1,size-1);
-            Rectangle c = new Rectangle(size*6,0,size-1,size-1);
-            Rectangle d = new Rectangle(size*5,size*1,size-1,size-1);
-            group.getChildren().addAll(a,b,c,d);
-        }
-        
+    private void moveOnKeyPressed(Piece piece) {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:
+                        piece.removePiece(piece);
+                        piece.changeForm();
+//                        System.out.println(piece.getForm());
+//                        System.out.println(piece.getPiecenumber());
+                        System.out.println("toimii");
+                        System.out.println(piece.getA().getX());
+                        System.out.println(piece.getB().getX());
+                        group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
+                    break;
+                }
+            }
+        });
     }
-
-    
     
     public static void main(String[] args) {
         launch(args);
