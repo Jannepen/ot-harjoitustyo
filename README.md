@@ -35,8 +35,10 @@ nyt hakemistossa target on suoritettava jar-tiedosto Tetris-1.0-SNAPSHOT.jar
 ### Checkstyle
 
 checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
-
-
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Virheilmoitukset saadaan avaamalla tiedosto target/site/checkstyle.html
 
 ## Dokumentaatio
 
