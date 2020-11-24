@@ -6,13 +6,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Piece {
-    Rectangle a;
-    Rectangle b;
-    Rectangle c;
-    Rectangle d;
-    int piecenumber;
-    int form;
-    int size = 20;
+    private Rectangle a;
+    private Rectangle b;
+    private Rectangle c;
+    private Rectangle d;
+    private int piecenumber;
+    private int form;
+    private int size = 20;
     
     //constructor
     public Piece(Rectangle a, Rectangle b, Rectangle c, Rectangle d, int piecenumber, int form) {
@@ -51,7 +51,7 @@ public class Piece {
     
     //creates a rectangle when given x and y coordinates
     public Rectangle rectangleCreator(int x, int y) {
-        Rectangle rectangle = new Rectangle(size*x,size*y,size-1,size-1);
+        Rectangle rectangle = new Rectangle(size*x, size*y, size-1, size-1);
         return rectangle;
     }
     
@@ -163,8 +163,6 @@ public class Piece {
         }else{
             return new Piece(a,b,c,d,piecenumber,form);
         }
-//        return new Piece(a,b,c,d,piecenumber,form);
-
     }
     
     //rotates piece when called

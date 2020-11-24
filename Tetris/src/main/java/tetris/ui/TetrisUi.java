@@ -38,7 +38,7 @@ public class TetrisUi extends Application {
         
         piece.newPiece();
         group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
-        System.out.println(piece.getPiecenumber());
+//        System.out.println(piece.getPiecenumber());
         
         scene = new Scene(group, xmax, ymax);
         
@@ -57,11 +57,6 @@ public class TetrisUi extends Application {
                     case UP:
                         piece.removePiece(piece);
                         piece.changeForm();
-//                        System.out.println(piece.getForm());
-//                        System.out.println(piece.getPiecenumber());
-                        System.out.println("toimii");
-                        System.out.println(piece.getA().getX());
-                        System.out.println(piece.getB().getX());
                         group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
                     break;
                 }
