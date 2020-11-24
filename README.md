@@ -34,6 +34,8 @@ nyt hakemistossa target on suoritettava jar-tiedosto Tetris-1.0-SNAPSHOT.jar
 
 ## Dokumentaatio
 
-[määrittelydokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Määrittelydokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[työaikakirjanpito](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[Työaikakirjanpito](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+[Arkkitehtuurikuvaus](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
