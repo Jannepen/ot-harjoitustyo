@@ -23,8 +23,8 @@ import tetris.domain.Piece;
 public class TetrisUi extends Application {
     
     public int size = 20;
-    public int xmax = 11*size;
-    public int ymax = 21*size;
+    public int xmax = 11 * size;
+    public int ymax = 21 * size;
     public Group group = new Group();
     public Piece piece;
     public Scene scene;
@@ -33,11 +33,11 @@ public class TetrisUi extends Application {
     @Override
     public void start(Stage window) throws Exception {
         
-        piece = new Piece(new Rectangle(0,0), new Rectangle(0,0),new Rectangle(0,0),new Rectangle(0,0),0,0); //initializing piece
+        piece = new Piece(new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), 0, 0); //initializing piece
 
         
         piece.newPiece();
-        group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
+        group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
 //        System.out.println(piece.getPiecenumber());
         
         scene = new Scene(group, xmax, ymax);
@@ -57,8 +57,8 @@ public class TetrisUi extends Application {
                     case UP:
                         piece.removePiece(piece);
                         piece.changeForm();
-                        group.getChildren().addAll(piece.getA(),piece.getB(),piece.getC(),piece.getD());
-                    break;
+                        group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
+                        break;
                 }
             }
         });

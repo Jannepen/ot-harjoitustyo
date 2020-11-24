@@ -32,6 +32,12 @@ mvn package
 ```
 nyt hakemistossa target on suoritettava jar-tiedosto Tetris-1.0-SNAPSHOT.jar
 
+### Checkstyle
+
+checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
+
+
+
 ## Dokumentaatio
 
 [Määrittelydokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
