@@ -2,7 +2,7 @@
 
 ## Sovelluksen tämänhetkinen tila
 
-Tällä hetkellä sovellus ainoastaan luo yhden satunnaisesti valitun palikan, jota voi pyörittää ympäri(painamalla ylös nuolinäppäintä). Palikkoja on 7 erilaista.
+Tällä hetkellä sovellus luo yhden satunnaisesti valitun palikan, jota voi pyörittää ympäri(painamalla ylös nuolinäppäintä). Palikkoja on 7 erilaista.
 
 ## Komentorivitoiminnot
 
