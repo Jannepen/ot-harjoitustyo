@@ -2,7 +2,7 @@
 
 ## Sovelluksen tämänhetkinen tila
 
-Tällä hetkellä sovellus ainoastaan luo yhden satunnaisesti valitun palikan. Palikkoja on 7 erilaista. Sovelluksessa ei ole vielä testejä.
+Tällä hetkellä sovellus ainoastaan luo yhden satunnaisesti valitun palikan, jota voi pyörittää ympäri(painamalla ylös nuolinäppäintä). Palikkoja on 7 erilaista.
 
 ## Komentorivitoiminnot
 
@@ -13,7 +13,7 @@ Koodin pystyy suorittamaan komennolla
 mvn compile exec:java -Dexec.mainClass=tetris.Main
 ```
 
-### Testaus (Huom. testejä ei vielä ole)
+### Testaus
 
 Testit suoritetaan komennolla
 ```
