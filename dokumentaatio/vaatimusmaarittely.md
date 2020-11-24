@@ -6,13 +6,13 @@ Sovellus on klassikkopeli tetris. Tetriksessä pyritään keräämään pisteit�
 
 ## Suunnitellut toiminnallisuudet
 
--Putoavia palikoita on 7 erilaista
+-Putoavia palikoita on 7 erilaista (tehty, tosin ei putoa vielä)
 
--Jokainen putoava palikka valitaan satunnaisesti
+-Jokainen putoava palikka valitaan satunnaisesti (tehty)
 
 -Kun muodostuu kokonainen vaakarivi, se poistuu ruudusta
 
--Palikoita voidaan pyörittää eri suuntiin, kun ne putoaa
+-Palikoita voidaan pyörittää eri suuntiin, kun ne putoaa (tehty)
 
 -Peli loppuu, kun palikka osuu ruudun yläreunaan
 
