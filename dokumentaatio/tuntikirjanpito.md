@@ -8,3 +8,4 @@
 |22.11|2   |käyttöliittymän erittäminen sovelluslogiikasta|
 |23.11|5   |metodien tekoa palikoidet pyörittämistä varten|
 |24.11|5   |metodien tekoa, lisää testejä, checkstyle alustaminen|
+|yht  |23  |
