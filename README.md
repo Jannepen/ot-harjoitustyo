@@ -47,3 +47,7 @@ Virheilmoitukset saadaan avaamalla tiedosto target/site/checkstyle.html
 [Työaikakirjanpito](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Arkkitehtuurikuvaus](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+## Releaset
+
+[Viikko 5](https://github.com/Jannepen/ot-harjoitustyo/releases/tag/viikko5)
