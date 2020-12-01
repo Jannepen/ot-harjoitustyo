@@ -16,8 +16,69 @@ public class PieceTest {
     
     @Before
     public void setUp() {
-        piece = new Piece(r,r,r,r,0,0);
         r = new Rectangle(100,20,19,19);
+        piece = new Piece(r,r,r,r,0,0);
+    }
+    
+    @Test
+    public void rotateSChangesTheFormOfSPiece() {
+        piece.createS();
+        piece.rotateS();
+        assertEquals(1, piece.getForm());
+    }
+    
+    @Test 
+    public void rotateSChangesToOriginalFormWhenCalledTwice() {
+        piece.createS();
+        piece.rotateS();
+        piece.rotateS();
+        assertEquals(0, piece.getForm());
+    }
+    
+    @Test
+    public void rotateIChangesTheFormOfIPiece() {
+        piece.createI();
+        piece.rotateI();
+        assertEquals(1, piece.getForm());
+    }
+    
+    @Test 
+    public void rotateIChangesToOriginalFormWhenCalledTwice() {
+        piece.createI();
+        piece.rotateI();
+        piece.rotateI();
+        assertEquals(0, piece.getForm());
+    }
+    
+    @Test
+    public void rectangleOutOfBoundsReturnsTrue() {
+        r.setX(-1.0);
+        assertEquals(true, piece.rectangleOutOfBounds(r));
+    }
+    
+    @Test
+    public void returnsTrueWhenRectangleHitsWall() {
+        r.setX(-1.0);
+        piece.setA(r);
+        assertEquals(true, piece.hitsWall());
+    }
+    
+    @Test
+    public void pieceMovesDownCorrectly() {
+        piece.moveDown();
+        assertEquals(40, (int)piece.getA().getY());
+    }
+    
+    @Test
+    public void pieceMovesToTheRightCorrectly() {
+        piece.moveRight();
+        assertEquals(120, (int)piece.getB().getX());
+    }
+    
+    @Test
+    public void pieceMovesToTheLeftCorrectly() {
+        piece.moveLeft();
+        assertEquals(80, (int)piece.getB().getX());
     }
     
     @Test

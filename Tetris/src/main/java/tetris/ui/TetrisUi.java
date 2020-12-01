@@ -1,8 +1,6 @@
 
 package tetris.ui;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -11,7 +9,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import tetris.domain.Piece;
-import tetris.domain.Mover;
 
 public class TetrisUi extends Application {
     
@@ -21,17 +18,11 @@ public class TetrisUi extends Application {
     public Group group = new Group();
     public Piece piece;
     public Scene scene;
-    public ArrayList<Rectangle> rectangles;
-//    public Mover mover;
-
     
     @Override
     public void start(Stage window) throws Exception {
         
         piece = new Piece(new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), 0, 0); //initializing piece
-        rectangles = new ArrayList<>();
-        Rectangle aaa = new Rectangle(size*5,size*10,size-1,size-1);
-        Rectangle aab = new Rectangle(size*6,size*10,size-1,size-1);
         
         piece.newPiece();
         group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
@@ -44,6 +35,7 @@ public class TetrisUi extends Application {
         window.show();
     }
     
+    //removes piece from the field
     private void removePiece(Piece p) {
         group.getChildren().remove(p.getA());
         group.getChildren().remove(p.getB());
@@ -51,6 +43,7 @@ public class TetrisUi extends Application {
         group.getChildren().remove(p.getD());
     }
     
+    //piece moves down
     private void moveDown() {
         if (!piece.canDrop()) {
             piece.newPiece();
@@ -61,6 +54,7 @@ public class TetrisUi extends Application {
         group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
     }
     
+    //piece moves right
     private void moveRight() {
         if (!piece.canGoRight()) {
             return;
@@ -70,6 +64,7 @@ public class TetrisUi extends Application {
         group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
     }
     
+    //piece moves left
     private void moveLeft() {
         if (!piece.canGoLeft()) {
             return;
@@ -79,6 +74,7 @@ public class TetrisUi extends Application {
         group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
     }
     
+    //piece changes form
     private void turnPiece() {
         if (piece.hitsWall()) {
             return;
