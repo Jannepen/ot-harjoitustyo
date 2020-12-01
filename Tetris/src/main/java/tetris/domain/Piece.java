@@ -49,6 +49,31 @@ public class Piece {
         return form;
     }
     
+    //bunch of setters
+    public void setA(Rectangle a) {
+        this.a = a;
+    }
+    
+    public void setB(Rectangle b) {
+        this.b = b;
+    }
+    
+    public void setC(Rectangle c) {
+        this.c = c;
+    }
+
+    public void setD(Rectangle d) {
+        this.d = d;
+    }
+    
+    public void setPiecenumber(int piecenumber) {
+        this.piecenumber = piecenumber;
+    }
+    
+    public void setForm(int form) {
+        this.form = form;
+    }
+    
     //creates a rectangle when given x and y coordinates
     public Rectangle rectangleCreator(int x, int y) {
         Rectangle rectangle = new Rectangle(size * x, size * y, size - 1, size - 1);
@@ -341,5 +366,52 @@ public class Piece {
             form = 0;
         }
         return new Piece(a, b, c, d, piecenumber, form);
+    }
+   
+    public boolean hitsWall() {
+        if (rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean rectangleOutOfBounds(Rectangle r) {
+        if ((int)r.getX() <= 1 || (int)r.getX() >= size * 10 || (int)r.getY() >= size * 20) {
+            return true;
+        }
+        return false;
+    }
+    
+    public void moveDown() {
+        a = rectangleMover(a, 0, 1);
+        b = rectangleMover(b, 0, 1);
+        c = rectangleMover(c, 0, 1);
+        d = rectangleMover(d, 0, 1);
+    }
+    
+    public boolean canDrop() {
+        return (int)a.getY() + size < size * 21 && (int)b.getY() + size < size * 21 && (int)c.getY() + size < size * 21 && (int)d.getY() + size < size * 21;
+    }
+    
+    public void moveRight() {
+        a = rectangleMover(a, 1, 0);
+        b = rectangleMover(b, 1, 0);
+        c = rectangleMover(c, 1, 0);
+        d = rectangleMover(d, 1, 0);
+    }
+    
+    public boolean canGoRight() {
+        return (int)a.getX() + size < size * 11 && (int)b.getX() + size < size * 11 && (int)c.getX() + size < size * 11 && (int)d.getX() + size < size * 11;
+    }
+    
+    public void moveLeft() {
+        a = rectangleMover(a, -1, 0);
+        b = rectangleMover(b, -1, 0);
+        c = rectangleMover(c, -1, 0);
+        d = rectangleMover(d, -1, 0);
+    }
+    
+    public boolean canGoLeft() {
+        return (int)a.getX() - size >= 0 && (int)b.getX() - size >= 0 && (int)c.getX() - size >= 0 && (int)d.getX() - size >= 0;
     }
 }
