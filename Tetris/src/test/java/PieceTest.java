@@ -35,6 +35,21 @@ public class PieceTest {
         assertEquals(0, piece.getForm());
     }
     
+        @Test
+    public void rotateZChangesTheFormOfZPiece() {
+        piece.createZ();
+        piece.rotateZ();
+        assertEquals(1, piece.getForm());
+    }
+    
+    @Test 
+    public void rotateZChangesToOriginalFormWhenCalledTwice() {
+        piece.createZ();
+        piece.rotateZ();
+        piece.rotateZ();
+        assertEquals(0, piece.getForm());
+    }
+    
     @Test
     public void rotateIChangesTheFormOfIPiece() {
         piece.createI();
