@@ -369,17 +369,11 @@ public class Piece {
     }
    
     public boolean hitsWall() {
-        if (rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true) {
-            return true;
-        }
-        return false;
+        return rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true;
     }
     
     public boolean rectangleOutOfBounds(Rectangle r) {
-        if ((int)r.getX() <= 1 || (int)r.getX() >= size * 10 || (int)r.getY() >= size * 20) {
-            return true;
-        }
-        return false;
+        return (int) r.getX() <= 1 || (int) r.getX() >= size * 10 || (int) r.getY() >= size * 20;
     }
     
     public void moveDown() {
@@ -390,7 +384,7 @@ public class Piece {
     }
     
     public boolean canDrop() {
-        return (int)a.getY() + size < size * 21 && (int)b.getY() + size < size * 21 && (int)c.getY() + size < size * 21 && (int)d.getY() + size < size * 21;
+        return (int) a.getY() + size < size * 21 && (int) b.getY() + size < size * 21 && (int) c.getY() + size < size * 21 && (int) d.getY() + size < size * 21;
     }
     
     public void moveRight() {
@@ -401,7 +395,7 @@ public class Piece {
     }
     
     public boolean canGoRight() {
-        return (int)a.getX() + size < size * 11 && (int)b.getX() + size < size * 11 && (int)c.getX() + size < size * 11 && (int)d.getX() + size < size * 11;
+        return (int) a.getX() + size < size * 11 && (int) b.getX() + size < size * 11 && (int) c.getX() + size < size * 11 && (int) d.getX() + size < size * 11;
     }
     
     public void moveLeft() {
@@ -412,6 +406,6 @@ public class Piece {
     }
     
     public boolean canGoLeft() {
-        return (int)a.getX() - size >= 0 && (int)b.getX() - size >= 0 && (int)c.getX() - size >= 0 && (int)d.getX() - size >= 0;
+        return (int) a.getX() - size >= 0 && (int) b.getX() - size >= 0 && (int) c.getX() - size >= 0 && (int) d.getX() - size >= 0;
     }
 }

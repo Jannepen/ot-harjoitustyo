@@ -8,4 +8,7 @@
 |22.11|2   |käyttöliittymän erittäminen sovelluslogiikasta|
 |23.11|5   |metodien tekoa palikoidet pyörittämistä varten|
 |24.11|5   |metodien tekoa, lisää testejä, checkstyle alustaminen|
-|yht  |23  |
+|28.11|2   |metodien tekoa|
+|30.11|5   |lisää metodien tekoa|
+|1.12 |6   |lisää metodien tekoa, lisää testejä, repositorion sekä koodin siivoamista sekä releasen tekeminen|
+|yht  |36  |
