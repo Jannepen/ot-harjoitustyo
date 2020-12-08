@@ -368,14 +368,17 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
    
+    //checks if piece is out of bounds
     public boolean hitsWall() {
         return rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true;
     }
     
+    //checks if rectangle is out of bounds
     public boolean rectangleOutOfBounds(Rectangle r) {
         return (int) r.getX() <= 1 || (int) r.getX() >= size * 10 || (int) r.getY() >= size * 20;
     }
     
+    //moves piece down by one
     public void moveDown() {
         a = rectangleMover(a, 0, 1);
         b = rectangleMover(b, 0, 1);
@@ -383,10 +386,12 @@ public class Piece {
         d = rectangleMover(d, 0, 1);
     }
     
+    //checks if piece hits the floor
     public boolean canDrop() {
         return (int) a.getY() + size < size * 21 && (int) b.getY() + size < size * 21 && (int) c.getY() + size < size * 21 && (int) d.getY() + size < size * 21;
     }
     
+    //moves piece right by one
     public void moveRight() {
         a = rectangleMover(a, 1, 0);
         b = rectangleMover(b, 1, 0);
@@ -394,10 +399,12 @@ public class Piece {
         d = rectangleMover(d, 1, 0);
     }
     
+    //checks if piece hits the right wall
     public boolean canGoRight() {
         return (int) a.getX() + size < size * 11 && (int) b.getX() + size < size * 11 && (int) c.getX() + size < size * 11 && (int) d.getX() + size < size * 11;
     }
     
+    //moves piece left by one
     public void moveLeft() {
         a = rectangleMover(a, -1, 0);
         b = rectangleMover(b, -1, 0);
@@ -405,6 +412,7 @@ public class Piece {
         d = rectangleMover(d, -1, 0);
     }
     
+    //checks if piece hits left wall
     public boolean canGoLeft() {
         return (int) a.getX() - size >= 0 && (int) b.getX() - size >= 0 && (int) c.getX() - size >= 0 && (int) d.getX() - size >= 0;
     }

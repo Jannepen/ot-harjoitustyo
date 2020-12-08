@@ -1,5 +1,7 @@
 # Tetris
 
+## Viikko 6 tarkastaja: tällä viikolla työ ei ole edennyt joten voit pistää 0p.
+
 ## Sovelluksen tämänhetkinen tila
 
 Tällä hetkellä sovellus luo satunnaisesti valittuja palikoita, joita voidaan pudottaa pohjalle painamalla alas nuolinäppäintä. Palikoita pystyy myös liikuttamaan oikealle ja vasemmalle nuolinäppäimillä, sekä pyörittää palikkaa ympäri painamalla ylös nuolinäppäintä. Uusi palikka syntyy, kun palikka osuu maahan ja käyttäjä painaa alas nuolinäppäintä. Palikoita ei vielä pysty kasaamaan, sillä ne eivät reagoi toisiinsa.
