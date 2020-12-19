@@ -1,3 +1,5 @@
+package domain;
+
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -119,13 +121,7 @@ public class PieceTest {
         Rectangle rectangle = piece.rectangleCreator(5,1);
         assertEquals(20, (int)rectangle.getY());
     }
-    
-    @Test
-    public void rectangleChangesColorToWhite() {
-        piece.changeRectangleColor(r);
-        assertEquals(true, r.getFill().equals(Color.WHITE));
-    }
-    
+
     @Test
     public void rectangleMoverMovesRectangleCorrectlyX() {
         r = piece.rectangleMover(r,1,0);

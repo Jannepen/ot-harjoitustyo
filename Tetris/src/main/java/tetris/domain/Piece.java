@@ -2,8 +2,11 @@
 package tetris.domain;
 
 import java.util.Random;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import tetris.ui.TetrisUi;
 
 public class Piece {
     private Rectangle a;
@@ -12,7 +15,11 @@ public class Piece {
     private Rectangle d;
     private int piecenumber;
     private int form;
-    private int size = 20;
+    private int lines = 0;
+    public static int size = TetrisUi.size;
+    public static Group group = TetrisUi.group;
+    public static int[][] field = TetrisUi.field;
+    public boolean gameOver = false;
     
     //constructor
     public Piece(Rectangle a, Rectangle b, Rectangle c, Rectangle d, int piecenumber, int form) {
@@ -49,6 +56,10 @@ public class Piece {
         return form;
     }
     
+    public int getLines() {
+        return lines;
+    }
+    
     //bunch of setters
     public void setA(Rectangle a) {
         this.a = a;
@@ -74,6 +85,14 @@ public class Piece {
         this.form = form;
     }
     
+    //removes piece from the field
+    public void removePiece() {
+        group.getChildren().remove(a);
+        group.getChildren().remove(b);
+        group.getChildren().remove(c);
+        group.getChildren().remove(d);
+    }
+    
     //creates a rectangle when given x and y coordinates
     public Rectangle rectangleCreator(int x, int y) {
         Rectangle rectangle = new Rectangle(size * x, size * y, size - 1, size - 1);
@@ -85,21 +104,6 @@ public class Piece {
         Random random = new Random();
         int n = random.nextInt(7);
         return n;
-    }
-    
-    //removes given piece
-    public Piece removePiece(Piece piece) {
-        changeRectangleColor(piece.getA());
-        changeRectangleColor(piece.getB());
-        changeRectangleColor(piece.getC());
-        changeRectangleColor(piece.getD());
-        return piece;
-    }
-    
-    //changes the color of given rectangle to white
-    public Rectangle changeRectangleColor(Rectangle rectangle) {
-        rectangle.setFill(Color.WHITE);
-        return rectangle;
     }
     
     //creates O-piece
@@ -367,7 +371,109 @@ public class Piece {
         }
         return new Piece(a, b, c, d, piecenumber, form);
     }
-   
+    
+    //piece moves down
+    public void moveDown() {
+        if (!canDrop()) {
+            pieceToField();
+            newPiece();
+            checkForLines();
+            return;
+        }
+        if (checkForRectanglesUnder()) {
+            pieceToField();
+            newPiece();
+            checkForLines();
+            checkForGameOver();
+            return;
+        }
+        removePiece();
+        a = rectangleMover(a, 0, 1);
+        b = rectangleMover(b, 0, 1);
+        c = rectangleMover(c, 0, 1);
+        d = rectangleMover(d, 0, 1);
+        group.getChildren().addAll(a, b, c, d);
+    }
+    
+    public boolean checkForGameOver() {
+        for (int i = 0; i < field.length; i++) {
+            if (field[i][3] == 1) {
+                gameOver = true;
+            }
+        }
+        return gameOver;
+    }
+    
+    public boolean checkForRectanglesUnder() {
+        return field[(int)a.getX()/size][(int)a.getY()/size + 1] == 1 || field[(int)b.getX()/size][(int)b.getY()/size + 1] == 1 || field[(int)c.getX()/size][(int)c.getY()/size + 1] == 1 || field[(int)d.getX()/size][(int)d.getY()/size + 1] == 1;
+    }
+    
+    public boolean checkForRectanglesRight() {
+        return field[(int)a.getX()/size + 1][(int)a.getY()/size ] == 1 || field[(int)b.getX()/size + 1][(int)b.getY()/size] == 1 || field[(int)c.getX()/size + 1][(int)c.getY()/size] == 1 || field[(int)d.getX()/size + 1][(int)d.getY()/size] == 1;
+    }
+    
+    public boolean checkForRectanglesLeft() {
+        return field[(int)a.getX()/size - 1][(int)a.getY()/size ] == 1 || field[(int)b.getX()/size - 1][(int)b.getY()/size] == 1 || field[(int)c.getX()/size - 1][(int)c.getY()/size] == 1 || field[(int)d.getX()/size - 1][(int)d.getY()/size] == 1;
+    }
+    
+    //checks if piece hits the floor
+    public boolean canDrop() {
+        return (int) a.getY() + size < size * 21 && (int) b.getY() + size < size * 21 && (int) c.getY() + size < size * 21 && (int) d.getY() + size < size * 21;
+    }
+    
+    //piece moves right
+    public void moveRight() {
+        if (!canGoRight()) {
+            return;
+        }
+        if (checkForRectanglesRight()) {
+            return;
+        }
+        removePiece();
+        a = rectangleMover(a, 1, 0);
+        b = rectangleMover(b, 1, 0);
+        c = rectangleMover(c, 1, 0);
+        d = rectangleMover(d, 1, 0);
+        group.getChildren().addAll(a, b, c, d);
+    }
+    
+    //checks if piece hits the right wall
+    public boolean canGoRight() {
+        return (int) a.getX() + size < size * 11 && (int) b.getX() + size < size * 11 && (int) c.getX() + size < size * 11 && (int) d.getX() + size < size * 11;
+    }
+    
+    //piece moves left
+    public void moveLeft() {
+        if (!canGoLeft()) {
+            return;
+        }
+        if (checkForRectanglesLeft()) {
+            return;
+        }
+        removePiece();
+        a = rectangleMover(a, -1, 0);
+        b = rectangleMover(b, -1, 0);
+        c = rectangleMover(c, -1, 0);
+        d = rectangleMover(d, -1, 0);
+        group.getChildren().addAll(a, b, c, d);
+    }
+    
+    
+    //checks if piece hits left wall
+    public boolean canGoLeft() {
+        return (int) a.getX() - size >= 0 && (int) b.getX() - size >= 0 && (int) c.getX() - size >= 0 && (int) d.getX() - size >= 0;
+    }
+    
+    //piece changes form
+    public void turnPiece() {
+        if (hitsWall()) {
+            return;
+        }
+        removePiece();
+        changeForm();
+        group.getChildren().addAll(a, b, c, d);
+    }
+    
     //checks if piece is out of bounds
     public boolean hitsWall() {
         return rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true;
@@ -378,42 +484,60 @@ public class Piece {
         return (int) r.getX() <= 1 || (int) r.getX() >= size * 10 || (int) r.getY() >= size * 20;
     }
     
-    //moves piece down by one
-    public void moveDown() {
-        a = rectangleMover(a, 0, 1);
-        b = rectangleMover(b, 0, 1);
-        c = rectangleMover(c, 0, 1);
-        d = rectangleMover(d, 0, 1);
+    public void pieceToField() {
+        field[(int)a.getX()/size][(int)a.getY()/size] = 1;
+        field[(int)b.getX()/size][(int)b.getY()/size] = 1;
+        field[(int)c.getX()/size][(int)c.getY()/size] = 1;
+        field[(int)d.getX()/size][(int)d.getY()/size] = 1;
     }
     
-    //checks if piece hits the floor
-    public boolean canDrop() {
-        return (int) a.getY() + size < size * 21 && (int) b.getY() + size < size * 21 && (int) c.getY() + size < size * 21 && (int) d.getY() + size < size * 21;
+    public void checkForLines() {
+        int full = 0;
+        for (int i = 0; i < field[0].length; i++) {
+            for (int j = 0; j < field.length; j++) {
+                if (field[j][i] == 1) {
+                    full++;
+                }
+            }
+            if (full == field.length) {
+                for (int[] field1 : field) {
+                    field1[i] = 0;
+                }
+                updateField(i);
+                lines++;
+            }
+            full = 0;
+        }
     }
     
-    //moves piece right by one
-    public void moveRight() {
-        a = rectangleMover(a, 1, 0);
-        b = rectangleMover(b, 1, 0);
-        c = rectangleMover(c, 1, 0);
-        d = rectangleMover(d, 1, 0);
+    public void updateField(int line) {
+        int[][] newfield = new int[field.length][field[0].length];
+        for (int i = 0; i < field[0].length; i++) {
+            for (int j = 0; j < field.length; j++) {
+                if (field[j][i] == 1) {
+                    if (i < line) {
+                        newfield[j][i+1] = 1;
+                    } else if (i > line) {
+                        newfield[j][i] = 1;
+                    }
+                }
+            }
+        }
+        field = newfield;
+        updateGroup();
     }
     
-    //checks if piece hits the right wall
-    public boolean canGoRight() {
-        return (int) a.getX() + size < size * 11 && (int) b.getX() + size < size * 11 && (int) c.getX() + size < size * 11 && (int) d.getX() + size < size * 11;
-    }
-    
-    //moves piece left by one
-    public void moveLeft() {
-        a = rectangleMover(a, -1, 0);
-        b = rectangleMover(b, -1, 0);
-        c = rectangleMover(c, -1, 0);
-        d = rectangleMover(d, -1, 0);
-    }
-    
-    //checks if piece hits left wall
-    public boolean canGoLeft() {
-        return (int) a.getX() - size >= 0 && (int) b.getX() - size >= 0 && (int) c.getX() - size >= 0 && (int) d.getX() - size >= 0;
+    public void updateGroup() {
+        group.getChildren().clear();
+        for (int i = 0; i < field[0].length; i++) {
+            for (int j = 0; j < field.length; j++) {
+                if (field[j][i] == 1) {
+                    Rectangle r = rectangleCreator(j,i);
+                    group.getChildren().add(r);
+                }
+            }
+        }
+        Line line = new Line(0,size*3,size*11,size*3);
+        group.getChildren().add(line);
     }
 }
