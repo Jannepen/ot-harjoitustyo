@@ -1,7 +1,6 @@
 
 package tetris.ui;
 
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Application;
@@ -17,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import tetris.domain.Field;
 import tetris.domain.Piece;
 
 public class TetrisUi extends Application {
@@ -49,7 +47,7 @@ public class TetrisUi extends Application {
             public void run() {
                 Platform.runLater(new Runnable() {
                     public void run() {
-//                        piece.moveDown();
+                        piece.moveDown();
                         if (piece.getgameOver() == true) {
                             gameOver();
                         }

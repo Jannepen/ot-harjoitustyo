@@ -3,9 +3,12 @@ package tetris.domain;
 
 import java.util.Random;
 import javafx.scene.Group;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import tetris.ui.TetrisUi;
+
+/**
+ * Palikoiden käsittelystä vastaava luokka
+ */
 
 public class Piece {
     private Rectangle a;
@@ -19,7 +22,6 @@ public class Piece {
     public boolean gameOver = false;
     public Field field;
     
-    //constructor
     public Piece(Rectangle a, Rectangle b, Rectangle c, Rectangle d, int piecenumber, int form) {
         this.a = a;
         this.b = b;
@@ -30,7 +32,6 @@ public class Piece {
         this.field = new Field(11, 21);
     }
 
-    //bunch of getters
     public Rectangle getA() {
         return this.a;
     }
@@ -63,7 +64,6 @@ public class Piece {
         return gameOver;
     }
     
-    //bunch of setters
     public void setA(Rectangle a) {
         this.a = a;
     }
@@ -87,8 +87,10 @@ public class Piece {
     public void setForm(int form) {
         this.form = form;
     }
-    
-    //removes piece from the field
+
+/**
+ * poistaa vanhan palikan ruudulta sen tippuessa
+ */
     public void removePiece() {
         group.getChildren().remove(a);
         group.getChildren().remove(b);
@@ -96,20 +98,31 @@ public class Piece {
         group.getChildren().remove(d);
     }
     
-    //creates a rectangle when given x and y coordinates
+/**
+ * luo oikean kokoisen neliön annettuihin koordinaatteihin
+ * @param   x   x-koordinaatti 
+ * @param   y   y-koordinaatti
+ * @return luotu neliö
+ */
     public Rectangle rectangleCreator(int x, int y) {
         Rectangle rectangle = new Rectangle(size * x, size * y, size - 1, size - 1);
         return rectangle;
     }
     
-    //returns a random number between 0 and 6
+/**
+ * arpoo satunnaisesti numeron väliltä 0-6
+ * @return arvottu numero
+ */
     public int randomNumber() {
         Random random = new Random();
         int n = random.nextInt(7);
         return n;
     }
-    
-    //creates O-piece
+
+/**
+ * tekee O-palikan
+ * @return O-palikka
+ */
     public Piece createO() { 
         a = rectangleCreator(5, 0);
         b = rectangleCreator(6, 0);
@@ -120,7 +133,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //creates original I-piece
+/**
+ * tekee I-palikan
+ * @return I-palikka
+ */
     public Piece createI() {
         a = rectangleCreator(5, 0);
         b = rectangleCreator(5, 1);
@@ -132,7 +148,10 @@ public class Piece {
     }
 
     
-    //creates S-piece
+/**
+ * tekee S-palikan
+ * @return S-palikka
+ */
     public Piece createS() {
         a = rectangleCreator(5, 0);
         b = rectangleCreator(6, 0);
@@ -143,7 +162,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //creates Z-piece
+/**
+ * tekee Z-palikan
+ * @return Z-palikka
+ */
     public Piece createZ() {
         a = rectangleCreator(4, 0);
         b = rectangleCreator(5, 0);
@@ -154,7 +176,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //creates L-piece
+/**
+ * tekee L-palikan
+ * @return L-palikka
+ */
     public Piece createL() {
         a = rectangleCreator(5, 0);
         b = rectangleCreator(5, 1);
@@ -165,7 +190,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //creates J-piece
+/**
+ * tekee J-palikan
+ * @return J-palikka
+ */
     public Piece createJ() {
         a = rectangleCreator(5, 0);
         b = rectangleCreator(5, 1);
@@ -176,7 +204,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //creates T-piece
+/**
+ * tekee T-palikan
+ * @return T-palikka
+ */
     public Piece createT() {
         a = rectangleCreator(4, 0);
         b = rectangleCreator(5, 0);
@@ -186,8 +217,11 @@ public class Piece {
         form = 0;
         return new Piece(a, b, c, d, piecenumber, form);
     }
-    
-    //creates a new randomly chosen piece
+
+/**
+ * luo satunnaisesti valitun palikan
+ * @return luotu palikka
+ */
     public Piece newPiece() {
         switch (randomNumber()) {
             case 0:
@@ -209,7 +243,9 @@ public class Piece {
         }
     }
     
-    //rotates piece when called
+/**
+ * kääntää kerran palikkaa
+ */
     public void changeForm() {
         if (piecenumber == 0) { 
         } else if (piecenumber == 1) { //rotates I-piece
@@ -227,13 +263,22 @@ public class Piece {
         }
     }
     
-    //moves rectangle by given x and y
+/**
+ * liikuttaa parametrina annettua kuutiota koordinaattien mukaan
+ * @param   rectangle   kuutio
+ * @param   x   kuinka paljon kuutio liikkuu x-suunnassa
+ * @param   y   kuinka paljon kuutio liikkuu y-suunnassa
+ * @return 
+ */
     public Rectangle rectangleMover(Rectangle rectangle, int x, int y) {
         rectangle = rectangleCreator((int) rectangle.getX() / size + x, (int) rectangle.getY() / size + y);
         return rectangle;
     }
     
-    //rotates I-piece
+/**
+ * kääntää I-palikkaa
+ * @return käännetty I-palikka
+ */
     public Piece rotateI() {
         if (form == 0) {
             a = rectangleMover(a, -2, 2);
@@ -251,7 +296,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //rotates S-piece
+/**
+ * kääntää S-palikkaa
+ * @return käännetty S-palikka
+ */
     public Piece rotateS() {
         if (form == 0) {
             a = rectangleMover(a, 0, 0);
@@ -269,7 +317,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //rotates Z-piece
+/**
+ * kääntää Z-palikkaa
+ * @return käännetty Z-palikka
+ */
     public Piece rotateZ() {
         if (form == 0) {
             a = rectangleMover(a, 1, 0);
@@ -287,7 +338,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-        //rotates L-piece
+/**
+ * kääntää L-palikkaa
+ * @return käännetty L-palikka
+ */
     public Piece rotateL() {
         if (form == 0) {
             a = rectangleMover(a, -1, 1);
@@ -317,7 +371,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-        //rotates L-piece
+/**
+ * kääntää J-palikkaa
+ * @return käännetty J-palikka
+ */
     public Piece rotateJ() {
         if (form == 0) {
             a = rectangleMover(a, -1, 0);
@@ -347,7 +404,10 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-        //rotates L-piece
+/**
+ * kääntää T-palikkaa
+ * @return käännetty T-palikka
+ */
     public Piece rotateT() {
         if (form == 0) {
             a = rectangleMover(a, 0, 0);
@@ -377,7 +437,9 @@ public class Piece {
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-//    piece moves down
+/**
+ * liikuttaa palikkaa yhdellä alaspäin jos se on mahdollista
+ */
     public void moveDown() {
         if (!canDrop()) {
             field.addPiece(new Piece(a, b, c, d, piecenumber, form));
@@ -400,12 +462,17 @@ public class Piece {
         group.getChildren().addAll(a, b, c, d);
     }
     
-    //checks if piece hits the floor
+/**
+ * tarkistaa osuuko palikka lattiaan
+ * @return false jos palikka osuu lattiaan
+ */
     public boolean canDrop() {
         return (int) a.getY() + size < size * 21 && (int) b.getY() + size < size * 21 && (int) c.getY() + size < size * 21 && (int) d.getY() + size < size * 21;
     }
     
-    //piece moves right
+/**
+ * liikuttaa palikkaa yhdellä oikealle jos se on mahdollista
+ */
     public void moveRight() {
         if (!canGoRight()) {
             return;
@@ -421,12 +488,17 @@ public class Piece {
         group.getChildren().addAll(a, b, c, d);
     }
     
-    //checks if piece hits the right wall
+/**
+ * tarkistaa osuuko palikka oikeaan seinään
+ * @return false jos palikka osuu oikeaan seinään
+ */
     public boolean canGoRight() {
         return (int) a.getX() + size < size * 11 && (int) b.getX() + size < size * 11 && (int) c.getX() + size < size * 11 && (int) d.getX() + size < size * 11;
     }
     
-    //piece moves left
+/**
+ * liikuttaa palikkaa yhdellä vasemmalle jos se on mahdollista
+ */
     public void moveLeft() {
         if (!canGoLeft()) {
             return;
@@ -442,13 +514,17 @@ public class Piece {
         group.getChildren().addAll(a, b, c, d);
     }
     
-    
-    //checks if piece hits left wall
+/**
+ * tarkistaa osuuko palikka vasempaan seinään
+ * @return false jos palikka osuu vasempaan seinään
+ */
     public boolean canGoLeft() {
         return (int) a.getX() - size >= 0 && (int) b.getX() - size >= 0 && (int) c.getX() - size >= 0 && (int) d.getX() - size >= 0;
     }
     
-    //piece changes form
+/**
+ * kääntää palikkaa kerran jos se on mahdollista
+ */
     public void turnPiece() {
         Piece test = new Piece(a,b,c,d,piecenumber,form);
         test.changeForm();
@@ -463,12 +539,19 @@ public class Piece {
         group.getChildren().addAll(a, b, c, d);
     }
     
-    //checks if piece is out of bounds
+/**
+ * tarkistaa onko mikään osa palikasta reunojen ulkopuolella
+ * @return true jos osa palikasta reunojen ulkopuolella
+ */
     public boolean hitsWall() {
         return rectangleOutOfBounds(a) == true || rectangleOutOfBounds(b) == true || rectangleOutOfBounds(c) == true || rectangleOutOfBounds(d) == true;
     }
     
-    //checks if rectangle is out of bounds
+/**
+ * tarkistaa onko annettu neliö reunojen ulkopuolella
+ * @param   r   neliö
+ * @return   true jos annettu neliö on reunojen ulkopuolella
+ */
     public boolean rectangleOutOfBounds(Rectangle r) {
         return (int) r.getX() < 0 || (int) r.getX() > size * 10 || (int) r.getY() > size * 20;
     }
