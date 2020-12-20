@@ -63,4 +63,24 @@ public class PieceRotatingTest {
         assertEquals(0, piece.getForm());
     }
 
+    @Test
+    public void rotateLChangesTheFormOfLPiece() {
+        piece.createL();
+        piece.rotateL();
+        assertEquals(1, piece.getForm());
+    }
+    
+    @Test
+    public void rotateJChangesTheFormOfJPiece() {
+        piece.createJ();
+        piece.rotateJ();
+        assertEquals(1, piece.getForm());
+    }
+    
+    @Test
+    public void rotateTChangesTheFormOfTPiece() {
+        piece.createT();
+        piece.rotateT();
+        assertEquals(1, piece.getForm());
+    }
 }

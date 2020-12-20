@@ -61,10 +61,8 @@ public class RectangleHandlingTest {
     }
     
     @Test
-    public void returnsTrueWhenRectangleHitsWall() {
-        r.setX(-1.0);
-        piece.setA(r);
-        assertEquals(true, piece.hitsWall());
+    public void rectangleOutOfBoundsReturnsFalse() {
+        assertEquals(false, piece.rectangleOutOfBounds(r));
     }
     
 }

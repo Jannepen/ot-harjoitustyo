@@ -34,4 +34,24 @@ public class PieceMovementTest {
         piece.moveLeft();
         assertEquals(80, (int)piece.getB().getX());
     }
+    
+    @Test
+    public void returnsTrueWhenPieceHitsWall() {
+        r.setX(-1.0);
+        piece.setA(r);
+        assertEquals(true, piece.hitsWall());
+    }
+    
+    @Test
+    public void returnsfalseWhenPieceDoesntHitWall() {
+        piece.createO();
+        assertEquals(false, piece.hitsWall());
+    }
+    
+    @Test
+    public void turnPieceRotatesIPiece() {
+        piece.createI();
+        piece.turnPiece();
+        assertEquals(1, piece.getForm());
+    }
 }
