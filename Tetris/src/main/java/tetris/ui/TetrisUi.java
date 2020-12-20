@@ -17,34 +17,30 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import tetris.domain.Field;
 import tetris.domain.Piece;
 
 public class TetrisUi extends Application {
     
-    public static final int size = 20;
-    public static final int xmax = 11 * size;
-    public static final int ymax = 21 * size;
+    public static final int SIZE = 20;
+    public static final int XMAX = 11 * SIZE;
+    public static final int YMAX = 21 * SIZE;
     public static Group group = new Group();
-    public static int[][] field = new int[xmax/size][ymax/size];
     public Piece piece;
     public Scene scene;
     
     @Override
     public void start(Stage window) throws Exception {
         
-        for (int[] a : field) {
-            Arrays.fill(a, 0);
-        }
-        
         piece = new Piece(new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), new Rectangle(0, 0), 0, 0); //initializing piece
         
         piece.newPiece();
         group.getChildren().addAll(piece.getA(), piece.getB(), piece.getC(), piece.getD());
         
-        Line line = new Line(0,size*3,xmax,size*3);
+        Line line = new Line(0, SIZE * 3, XMAX, SIZE * 3);
         group.getChildren().add(line);
         
-        scene = new Scene(group, xmax, ymax);
+        scene = new Scene(group, XMAX, YMAX);
         
         moveOnKeyPressed(piece);
         
@@ -53,8 +49,8 @@ public class TetrisUi extends Application {
             public void run() {
                 Platform.runLater(new Runnable() {
                     public void run() {
-                        piece.moveDown();
-                        if (piece.checkForGameOver() == true) {
+//                        piece.moveDown();
+                        if (piece.getgameOver() == true) {
                             gameOver();
                         }
                     }
@@ -62,7 +58,7 @@ public class TetrisUi extends Application {
             }
         };
 
-        timer.scheduleAtFixedRate(task,1000,300);
+        timer.scheduleAtFixedRate(task, 1000, 300);
         
         window.setScene(scene);
         window.show();
@@ -91,7 +87,7 @@ public class TetrisUi extends Application {
                         break;
                     case DOWN:
                         piece.moveDown();
-                        if (piece.checkForGameOver() == true) {
+                        if (piece.getgameOver() == true) {
                             gameOver();
                         }
                         break;
@@ -118,8 +114,8 @@ public class TetrisUi extends Application {
     private void exitGame() {
         Button exit = new Button();
         exit.setText("EXIT GAME");
-        exit.setTranslateX(10);
-        exit.setTranslateY(200);
+        exit.setTranslateX(65);
+        exit.setTranslateY(15);
         exit.setOnAction((event) -> {
             System.exit(0);
         });

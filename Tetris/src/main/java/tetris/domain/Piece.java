@@ -3,7 +3,6 @@ package tetris.domain;
 
 import java.util.Random;
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import tetris.ui.TetrisUi;
@@ -15,11 +14,10 @@ public class Piece {
     private Rectangle d;
     private int piecenumber;
     private int form;
-    private int lines = 0;
-    public static int size = TetrisUi.size;
+    public static int size = TetrisUi.SIZE;
     public static Group group = TetrisUi.group;
-    public static int[][] field = TetrisUi.field;
     public boolean gameOver = false;
+    public Field field;
     
     //constructor
     public Piece(Rectangle a, Rectangle b, Rectangle c, Rectangle d, int piecenumber, int form) {
@@ -29,6 +27,7 @@ public class Piece {
         this.d = d;
         this.piecenumber = piecenumber;
         this.form = form;
+        this.field = new Field(11, 21);
     }
 
     //bunch of getters
@@ -57,7 +56,11 @@ public class Piece {
     }
     
     public int getLines() {
-        return lines;
+        return field.getLines();
+    }
+    
+    public boolean getgameOver() {
+        return gameOver;
     }
     
     //bunch of setters
@@ -112,7 +115,9 @@ public class Piece {
         b = rectangleCreator(6, 0);
         c = rectangleCreator(5, 1);
         d = rectangleCreator(6, 1);
-        return new Piece(a, b, c, d, 0, 0);
+        piecenumber = 0;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates original I-piece
@@ -121,7 +126,9 @@ public class Piece {
         b = rectangleCreator(5, 1);
         c = rectangleCreator(5, 2);
         d = rectangleCreator(5, 3);
-        return new Piece(a, b, c, d, 1, 0);
+        piecenumber = 1;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
 
     
@@ -131,7 +138,9 @@ public class Piece {
         b = rectangleCreator(6, 0);
         c = rectangleCreator(4, 1);
         d = rectangleCreator(5, 1);
-        return new Piece(a, b, c, d, 2, 0);
+        piecenumber = 2;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates Z-piece
@@ -140,7 +149,9 @@ public class Piece {
         b = rectangleCreator(5, 0);
         c = rectangleCreator(5, 1);
         d = rectangleCreator(6, 1);
-        return new Piece(a, b, c, d, 3, 0);
+        piecenumber = 3;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates L-piece
@@ -149,7 +160,9 @@ public class Piece {
         b = rectangleCreator(5, 1);
         c = rectangleCreator(5, 2);
         d = rectangleCreator(6, 2);
-        return new Piece(a, b, c, d, 4, 0);
+        piecenumber = 4;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates J-piece
@@ -158,7 +171,9 @@ public class Piece {
         b = rectangleCreator(5, 1);
         c = rectangleCreator(5, 2);
         d = rectangleCreator(4, 2);
-        return new Piece(a, b, c, d, 5, 0);
+        piecenumber = 5;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates T-piece
@@ -167,37 +182,36 @@ public class Piece {
         b = rectangleCreator(5, 0);
         c = rectangleCreator(6, 0);
         d = rectangleCreator(5, 1);
-        return new Piece(a, b, c, d, 6, 0);
+        piecenumber = 6;
+        form = 0;
+        return new Piece(a, b, c, d, piecenumber, form);
     }
     
     //creates a new randomly chosen piece
     public Piece newPiece() {
-        piecenumber = randomNumber();
-        form = 0;
-        
-        if (piecenumber == 0) { //creates O-piece
-            return createO();
-        } else if (piecenumber == 1) { //creates I-piece
-            return createI();
-        } else if (piecenumber == 2) { //creates S-piece
-            return createS();
-        } else if (piecenumber == 3) { //creates Z-piece
-            return createZ();
-        } else if (piecenumber == 4) { //creates L-piece
-            return createL();
-        } else if (piecenumber == 5) { //creates J-piece
-            return createJ();
-        } else if (piecenumber == 6) { //creates T-piece
-            return createT();
-        } else {
-            return new Piece(a, b, c, d, piecenumber, form);
+        switch (randomNumber()) {
+            case 0:
+                return createO();
+            case 1:
+                return createI();
+            case 2:
+                return createS();
+            case 3:
+                return createZ();
+            case 4:
+                return createL();
+            case 5:
+                return createJ();
+            case 6:
+                return createT();
+            default:
+                return new Piece(a, b, c, d, piecenumber, form);
         }
     }
     
     //rotates piece when called
     public void changeForm() {
         if (piecenumber == 0) { 
-            rotateO();
         } else if (piecenumber == 1) { //rotates I-piece
             rotateI();
         } else if (piecenumber == 2) { //rotates S-piece
@@ -218,29 +232,20 @@ public class Piece {
         rectangle = rectangleCreator((int) rectangle.getX() / size + x, (int) rectangle.getY() / size + y);
         return rectangle;
     }
-
-    
-    public Piece rotateO() {
-        a = rectangleMover(a, 0, 0);
-        b = rectangleMover(b, 0, 0);
-        c = rectangleMover(c, 0, 0);
-        d = rectangleMover(d, 0, 0);
-        return new Piece(a, b, c, d, piecenumber, form);
-    }
     
     //rotates I-piece
     public Piece rotateI() {
         if (form == 0) {
-            a = rectangleMover(a, 0, 0);
-            b = rectangleMover(b, -2, -1);
-            c = rectangleMover(c, -1, -2);
-            d = rectangleMover(d, 1, -3);
+            a = rectangleMover(a, -2, 2);
+            b = rectangleMover(b, -1, 1);
+            c = rectangleMover(c, 0, 0);
+            d = rectangleMover(d, 1, -1);
             form = 1;
         } else if (form == 1) {
-            a = rectangleMover(a, 0, 0);
-            b = rectangleMover(b, 2, 1);
-            c = rectangleMover(c, 1, 2);
-            d = rectangleMover(d, -1, 3);
+            a = rectangleMover(a, 2, -2);
+            b = rectangleMover(b, 1, -1);
+            c = rectangleMover(c, 0, 0);
+            d = rectangleMover(d, -1, 1);
             form = 0;
         }
         return new Piece(a, b, c, d, piecenumber, form);
@@ -285,16 +290,16 @@ public class Piece {
         //rotates L-piece
     public Piece rotateL() {
         if (form == 0) {
-            a = rectangleMover(a, -1, 0);
-            b = rectangleMover(b, 0, -1);
-            c = rectangleMover(c, 1, -2);
-            d = rectangleMover(d, -2, -1);
+            a = rectangleMover(a, -1, 1);
+            b = rectangleMover(b, 0, 0);
+            c = rectangleMover(c, 1, -1);
+            d = rectangleMover(d, -2, 0);
             form = 1;
         } else if (form == 1) {
-            a = rectangleMover(a, 0, 0);
-            b = rectangleMover(b, 0, 0);
-            c = rectangleMover(c, -1, 1);
-            d = rectangleMover(d, 1, 1);
+            a = rectangleMover(a, 0, -1);
+            b = rectangleMover(b, 0, -1);
+            c = rectangleMover(c, -1, 0);
+            d = rectangleMover(d, 1, 0);
             form = 2;
         } else if (form == 2) {
             a = rectangleMover(a, 2, 0);
@@ -327,16 +332,16 @@ public class Piece {
             d = rectangleMover(d, -1, 1);
             form = 2;
         } else if (form == 2) {
-            a = rectangleMover(a, -1, 0);
-            b = rectangleMover(b, -1, 0);
-            c = rectangleMover(c, 1, -1);
-            d = rectangleMover(d, 1, -1);
+            a = rectangleMover(a, -1, 1);
+            b = rectangleMover(b, -1, 1);
+            c = rectangleMover(c, 1, 0);
+            d = rectangleMover(d, 1, 0);
             form = 3;
         } else if (form == 3) {
-            a = rectangleMover(a, 1, 0);
-            b = rectangleMover(b, 0, 1);
-            c = rectangleMover(c, -1, 2);
-            d = rectangleMover(d, -2, 1);
+            a = rectangleMover(a, 1, -1);
+            b = rectangleMover(b, 0, 0);
+            c = rectangleMover(c, -1, 1);
+            d = rectangleMover(d, -2, 0);
             form = 0;
         }
         return new Piece(a, b, c, d, piecenumber, form);
@@ -345,10 +350,10 @@ public class Piece {
         //rotates L-piece
     public Piece rotateT() {
         if (form == 0) {
-            a = rectangleMover(a, 1, 0);
-            b = rectangleMover(b, -1, 1);
-            c = rectangleMover(c, -1, 1);
-            d = rectangleMover(d, 0, 1);
+            a = rectangleMover(a, 0, 0);
+            b = rectangleMover(b, 0, -1);
+            c = rectangleMover(c, -1, 0);
+            d = rectangleMover(d, 0, 0);
             form = 1;
         } else if (form == 1) {
             a = rectangleMover(a, 0, 0);
@@ -357,34 +362,34 @@ public class Piece {
             d = rectangleMover(d, 1, -1);
             form = 2;
         } else if (form == 2) {
-            a = rectangleMover(a, 0, 0);
-            b = rectangleMover(b, 1, 0);
+            a = rectangleMover(a, 1, 0);
+            b = rectangleMover(b, 0, 0);
             c = rectangleMover(c, 0, 1);
             d = rectangleMover(d, 0, 0);
             form = 3;
         } else if (form == 3) {
             a = rectangleMover(a, -1, 0);
-            b = rectangleMover(b, 0, -1);
-            c = rectangleMover(c, 1, -2);
-            d = rectangleMover(d, -1, 0);
+            b = rectangleMover(b, 0, 1);
+            c = rectangleMover(c, 1, -1);
+            d = rectangleMover(d, -1, 1);
             form = 0;
         }
         return new Piece(a, b, c, d, piecenumber, form);
     }
     
-    //piece moves down
+//    piece moves down
     public void moveDown() {
         if (!canDrop()) {
-            pieceToField();
+            field.addPiece(new Piece(a, b, c, d, piecenumber, form));
             newPiece();
-            checkForLines();
+            field.checkForLines();
             return;
         }
-        if (checkForRectanglesUnder()) {
-            pieceToField();
+        if (field.checkForRectanglesUnder(new Piece(a, b, c, d, piecenumber, form))) {
+            field.addPiece(new Piece(a, b, c, d, piecenumber, form));
             newPiece();
-            checkForLines();
-            checkForGameOver();
+            field.checkForLines();
+            gameOver = field.checkForGameOver();
             return;
         }
         removePiece();
@@ -393,27 +398,6 @@ public class Piece {
         c = rectangleMover(c, 0, 1);
         d = rectangleMover(d, 0, 1);
         group.getChildren().addAll(a, b, c, d);
-    }
-    
-    public boolean checkForGameOver() {
-        for (int i = 0; i < field.length; i++) {
-            if (field[i][3] == 1) {
-                gameOver = true;
-            }
-        }
-        return gameOver;
-    }
-    
-    public boolean checkForRectanglesUnder() {
-        return field[(int)a.getX()/size][(int)a.getY()/size + 1] == 1 || field[(int)b.getX()/size][(int)b.getY()/size + 1] == 1 || field[(int)c.getX()/size][(int)c.getY()/size + 1] == 1 || field[(int)d.getX()/size][(int)d.getY()/size + 1] == 1;
-    }
-    
-    public boolean checkForRectanglesRight() {
-        return field[(int)a.getX()/size + 1][(int)a.getY()/size ] == 1 || field[(int)b.getX()/size + 1][(int)b.getY()/size] == 1 || field[(int)c.getX()/size + 1][(int)c.getY()/size] == 1 || field[(int)d.getX()/size + 1][(int)d.getY()/size] == 1;
-    }
-    
-    public boolean checkForRectanglesLeft() {
-        return field[(int)a.getX()/size - 1][(int)a.getY()/size ] == 1 || field[(int)b.getX()/size - 1][(int)b.getY()/size] == 1 || field[(int)c.getX()/size - 1][(int)c.getY()/size] == 1 || field[(int)d.getX()/size - 1][(int)d.getY()/size] == 1;
     }
     
     //checks if piece hits the floor
@@ -426,7 +410,7 @@ public class Piece {
         if (!canGoRight()) {
             return;
         }
-        if (checkForRectanglesRight()) {
+        if (field.checkForRectanglesRight(new Piece(a, b, c, d, piecenumber, form))) {
             return;
         }
         removePiece();
@@ -447,7 +431,7 @@ public class Piece {
         if (!canGoLeft()) {
             return;
         }
-        if (checkForRectanglesLeft()) {
+        if (field.checkForRectanglesLeft(new Piece(a, b, c, d, piecenumber, form))) {
             return;
         }
         removePiece();
@@ -466,7 +450,12 @@ public class Piece {
     
     //piece changes form
     public void turnPiece() {
-        if (hitsWall()) {
+        Piece test = new Piece(a,b,c,d,piecenumber,form);
+        test.changeForm();
+        if (test.hitsWall()) {
+            return;
+        }
+        if (field.checkIfPieceOverlaps(test)) {
             return;
         }
         removePiece();
@@ -481,63 +470,6 @@ public class Piece {
     
     //checks if rectangle is out of bounds
     public boolean rectangleOutOfBounds(Rectangle r) {
-        return (int) r.getX() <= 1 || (int) r.getX() >= size * 10 || (int) r.getY() >= size * 20;
-    }
-    
-    public void pieceToField() {
-        field[(int)a.getX()/size][(int)a.getY()/size] = 1;
-        field[(int)b.getX()/size][(int)b.getY()/size] = 1;
-        field[(int)c.getX()/size][(int)c.getY()/size] = 1;
-        field[(int)d.getX()/size][(int)d.getY()/size] = 1;
-    }
-    
-    public void checkForLines() {
-        int full = 0;
-        for (int i = 0; i < field[0].length; i++) {
-            for (int j = 0; j < field.length; j++) {
-                if (field[j][i] == 1) {
-                    full++;
-                }
-            }
-            if (full == field.length) {
-                for (int[] field1 : field) {
-                    field1[i] = 0;
-                }
-                updateField(i);
-                lines++;
-            }
-            full = 0;
-        }
-    }
-    
-    public void updateField(int line) {
-        int[][] newfield = new int[field.length][field[0].length];
-        for (int i = 0; i < field[0].length; i++) {
-            for (int j = 0; j < field.length; j++) {
-                if (field[j][i] == 1) {
-                    if (i < line) {
-                        newfield[j][i+1] = 1;
-                    } else if (i > line) {
-                        newfield[j][i] = 1;
-                    }
-                }
-            }
-        }
-        field = newfield;
-        updateGroup();
-    }
-    
-    public void updateGroup() {
-        group.getChildren().clear();
-        for (int i = 0; i < field[0].length; i++) {
-            for (int j = 0; j < field.length; j++) {
-                if (field[j][i] == 1) {
-                    Rectangle r = rectangleCreator(j,i);
-                    group.getChildren().add(r);
-                }
-            }
-        }
-        Line line = new Line(0,size*3,size*11,size*3);
-        group.getChildren().add(line);
+        return (int) r.getX() < 0 || (int) r.getX() > size * 10 || (int) r.getY() > size * 20;
     }
 }
