@@ -2,7 +2,7 @@
 
 ## Rakenne
 
-Koodin pakkausrakenne on tällä hetkellä seuraava:
+Koodin pakkausrakenne on seuraava:
 
 <img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pakkauskaavio.png">
 
