@@ -61,3 +61,5 @@ mvn javadoc:javadoc
 ## Releaset
 
 [Viikko 5](https://github.com/Jannepen/ot-harjoitustyo/releases/tag/viikko5)
+
+[Loppupalautus](https://github.com/Jannepen/ot-harjoitustyo/releases/tag/Loppupalautus)
