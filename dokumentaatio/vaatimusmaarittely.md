@@ -6,7 +6,7 @@ Sovellus on klassikkopeli tetris. Tetriksess채 pyrit채채n ker채채m채채n pisteit�
 
 ## Suunnitellut toiminnallisuudet
 
--Putoavia palikoita on 7 erilaista [x]
+-Putoavia palikoita on 7 erilaista - [x]
 
 -Jokainen putoava palikka valitaan satunnaisesti (tehty, viikko 3)
 
