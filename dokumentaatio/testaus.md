@@ -19,3 +19,11 @@ Käyttöliittymä on jätetty pois testauskattavuusraportista. Sovelluksen testa
 <img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/jacoco.png">
 
 Kappaleiden liikkumiseen ja pyörimiseen liittyvät testit ovat hyvin samantyyppisiä toistensa kanssa, jonka vuoksi osa testeistä on jätetty tekemättä. Tämän vuoksi kattavuudet ovat matalia.
+
+## Järjestelmätestaus
+
+Sovellusta on testattu Linux-ympäristössä [käyttöohjeen](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md) mukaisesti.
+
+## Mahdolliset ongelmat
+
+Sovellusta on kokeiltu mahdollisimman monilla syötteillä (palikoiden liikuttaminen ja kääntäminen), eikä sitä olla saatu kaatumaan.
