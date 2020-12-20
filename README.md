@@ -1,10 +1,8 @@
 # Tetris
 
-## Viikko 6 tarkastaja: tällä viikolla työ ei ole edennyt joten voit pistää 0p.
+## Sovellus
 
-## Sovelluksen tämänhetkinen tila
-
-Tällä hetkellä sovellus luo satunnaisesti valittuja palikoita, joita voidaan pudottaa pohjalle painamalla alas nuolinäppäintä. Palikoita pystyy myös liikuttamaan oikealle ja vasemmalle nuolinäppäimillä, sekä pyörittää palikkaa ympäri painamalla ylös nuolinäppäintä. Uusi palikka syntyy, kun palikka osuu maahan ja käyttäjä painaa alas nuolinäppäintä. Palikoita ei vielä pysty kasaamaan, sillä ne eivät reagoi toisiinsa.
+Sovellus on klassikkopeli tetris. Pelin tarkoituksena on kerätä pisteitä poistamalla vaakasuoraan muodostuvia kokonaisia rivejä.
 
 ## Komentorivitoiminnot
 
@@ -17,7 +15,7 @@ mvn compile exec:java -Dexec.mainClass=tetris.Main
 
 ### Testaus
 
-Testit suoritetaan komennolla
+Sovellusta testataan komennolla
 ```
 mvn test
 ```
@@ -32,7 +30,7 @@ Suoritetaan komento
 ```
 mvn package
 ```
-nyt hakemistossa target on suoritettava jar-tiedosto Tetris-1.0-SNAPSHOT.jar
+nyt hakemistosta target löytyy jar-tiedosto Tetris-1.0-SNAPSHOT.jar
 
 ### Checkstyle
 
@@ -40,7 +38,13 @@ checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
-Virheilmoitukset saadaan avaamalla tiedosto target/site/checkstyle.html
+
+### JavaDoc
+
+JavaDoc luodaan komennolla
+```
+mvn javadoc:javadoc
+```
 
 ## Dokumentaatio
 
@@ -49,6 +53,10 @@ Virheilmoitukset saadaan avaamalla tiedosto target/site/checkstyle.html
 [Työaikakirjanpito](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Arkkitehtuurikuvaus](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+[Testausdokumentti](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
+[Käyttöohje](https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Releaset
 
