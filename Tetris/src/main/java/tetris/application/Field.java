@@ -1,5 +1,5 @@
 
-package tetris.domain;
+package tetris.application;
 
 import java.util.Arrays;
 import javafx.scene.Group;

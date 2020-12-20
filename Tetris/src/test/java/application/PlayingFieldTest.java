@@ -1,11 +1,11 @@
-package domain;
+package application;
 
 import javafx.scene.shape.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetris.domain.Field;
-import tetris.domain.Piece;
+import tetris.application.Field;
+import tetris.application.Piece;
 
 public class PlayingFieldTest {
     

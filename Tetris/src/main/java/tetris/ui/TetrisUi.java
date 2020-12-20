@@ -16,7 +16,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import tetris.domain.Piece;
+import tetris.application.Piece;
 
 public class TetrisUi extends Application {
     
@@ -56,7 +56,7 @@ public class TetrisUi extends Application {
             }
         };
 
-        timer.scheduleAtFixedRate(task, 1000, 200);
+        timer.scheduleAtFixedRate(task, 1000, 250);
         
         window.setScene(scene);
         window.show();

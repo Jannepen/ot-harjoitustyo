@@ -1,5 +1,5 @@
 
-package tetris.domain;
+package tetris.application;
 
 import java.util.Random;
 import javafx.scene.Group;
