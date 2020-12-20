@@ -134,7 +134,7 @@ public class Field {
  * päivittää pelikentän oikeaksi täyden rivin poistuttua
  * @param   line   rivi josta täysi rivi löytyy 
  */
-        public void updateField(int line) {
+    public void updateField(int line) {
         int[][] newfield = new int[field.length][field[0].length];
         for (int i = 0; i < field[0].length; i++) {
             for (int j = 0; j < field.length; j++) {

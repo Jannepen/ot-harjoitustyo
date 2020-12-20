@@ -526,7 +526,7 @@ public class Piece {
  * kääntää palikkaa kerran jos se on mahdollista
  */
     public void turnPiece() {
-        Piece test = new Piece(a,b,c,d,piecenumber,form);
+        Piece test = new Piece(a, b, c, d, piecenumber, form);
         test.changeForm();
         if (test.hitsWall()) {
             return;
