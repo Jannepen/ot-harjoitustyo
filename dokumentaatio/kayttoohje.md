@@ -30,6 +30,9 @@ Palikoiden liikuttelu tapahtuu nuolinäppäimillä.
 <img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/arrowkeys.jpg">
 
 Nuoli ylös: Palikkaa voi kääntää ympäri, painamalla useasti pääsee takaisin alkuperäiseen muotoon.
+
 Nuoli oikealle: Palikka liikkuu yhdellä oikealle
+
 Nuoli vasemmalle: Palikka liikkuu yhdellä vasemmalle
+
 Nuoli alas: Palikka putoaa yhdellä alaspäin
