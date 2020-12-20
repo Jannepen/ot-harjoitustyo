@@ -16,7 +16,7 @@ Sovelluslogiikkaa, eli pakkauksen [tetris.application](https://github.com/Jannep
 
 Käyttöliittymä on jätetty pois testauskattavuusraportista. Sovelluksen testauksen rivikattavuus on 78% ja rivikattavuus 51%
 
-<img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/jacoco.png">
+<img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/jacoco.png">
 
 Kappaleiden liikkumiseen ja pyörimiseen liittyvät testit ovat hyvin samantyyppisiä toistensa kanssa, jonka vuoksi osa testeistä on jätetty tekemättä. Tämän vuoksi kattavuudet ovat matalia.
 
