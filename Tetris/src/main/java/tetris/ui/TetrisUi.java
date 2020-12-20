@@ -56,7 +56,7 @@ public class TetrisUi extends Application {
             }
         };
 
-        timer.scheduleAtFixedRate(task, 1000, 300);
+        timer.scheduleAtFixedRate(task, 1000, 200);
         
         window.setScene(scene);
         window.show();
