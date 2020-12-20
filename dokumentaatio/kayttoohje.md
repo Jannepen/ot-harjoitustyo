@@ -36,3 +36,11 @@ Nuoli oikealle: Palikka liikkuu yhdellä oikealle
 Nuoli vasemmalle: Palikka liikkuu yhdellä vasemmalle
 
 Nuoli alas: Palikka putoaa yhdellä alaspäin
+
+### Pelin loppu
+
+Kun jokin palikka osuu ylhäällä olevaan rajaan, peli loppuu. Score kertoo kuinka monta riviä pelaaja sai poistettua.
+
+<img src="https://github.com/Jannepen/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/gameover.png">
+
+Pelin voi sulkea painamalla "EXIT GAME" tai oikeassa yläkulmassa olevaa "x".
